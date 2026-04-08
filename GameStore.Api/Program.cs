@@ -44,6 +44,28 @@ app.MapGet("/games", () => games);
 app.MapGet("/games/{id}", (int id) => games.Find(game => game.Id == id))
   .WithName(GetGameEndpointName);
 
+//PUT /games/1
+app.MapPut("/games/{id}", (int id, UpdateGameDto updatedGame) =>
+{
+  var index = games.FindIndex(game => game.Id == id);
+
+  games[index] = new GameDto(
+    id,
+    updatedGame.Name,
+    updatedGame.Genre,
+    updatedGame.Price,
+    updatedGame.ReleaseDate
+  );
+
+  return Results.NoContent();
+});
+
+
+
+
+
+
+
 //POST /games
 app.MapPost("/games", (CreateGameDto newGame) =>
 {
