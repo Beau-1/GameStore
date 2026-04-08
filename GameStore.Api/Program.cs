@@ -82,4 +82,11 @@ app.MapPost("/games", (CreateGameDto newGame) =>
 
 });
 
+
+//DELETE /games/1
+app.MapDelete("/games/{id}", (int id) =>
+{
+  games.RemoveAll(game => game.Id == id);
+  return Results.NoContent();
+});
 app.Run();
