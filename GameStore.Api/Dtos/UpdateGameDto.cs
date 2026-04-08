@@ -1,8 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace GameStore.Api.Dtos;
 
 public record class UpdateGameDto(
-    string Name,
-    string Genre,
-    decimal Price,
+    [Required][StringLength(50)] string Name,
+    [Required][StringLength(20)] string Genre,
+    [Range(0, 999.99)] decimal Price,
     DateOnly ReleaseDate
 );
