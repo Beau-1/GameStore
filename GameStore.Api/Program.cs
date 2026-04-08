@@ -3,14 +3,15 @@ using GameStore.Api;
 using GameStore.Api.Data;
 using GameStore.Api.Dtos;
 using GameStore.Api.Endpoints;
+using GameStore.Api.Models;
+using Microsoft.Extensions.Options;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddValidation();
+builder.AddGameStoreDb();
 
-var connString = "Data Source=GameStore.db";
-builder.Services.AddSqlite<GameStoreContext>(connString);
 var app = builder.Build();
 
 app.MapGamesEndpoints();
