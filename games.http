@@ -1,11 +1,11 @@
 GET http://localhost:5112/games
 
 ### Get by ID
-GET http://localhost:5112/games/1
+GET http://localhost:5112/games/4
 
 
 ###
-PUT http://localhost:5112/games/1
+PUT http://localhost:5112/games/
 Content-Type: application/json
 
 {
@@ -25,3 +25,6 @@ Content-Type: application/json
     "price": 59.99,
     "releaseDate": "2023-10-20"
 }
+
+### Delete
+DELETE http://localhost:5112/games/1
